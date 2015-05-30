@@ -1,0 +1,18 @@
+{
+  "name": "angular-sails-wiring",
+  "version": "0.0.1",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "load-grunt-tasks": "^3.2.0"
+  },
+  "repository": {},
+  "devDependencies": {
+    "grunt-concurrent": "^1.0.0",
+    "grunt-connect-proxy": "^0.2.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "^0.10.1",
+    "grunt-nodemon": "^0.4.0",
+    "grunt-subgrunt": "^0.4.5",
+    "node-mocks-http": "^1.4.2"
+  }
+}
