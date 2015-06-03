@@ -1,7 +1,15 @@
 # angular-sails-wiring
-Angular and sails application boilerplate. Grunt.js based config to keep frontend and backend separate and maintainable.
+Angular and sails application boilerplate.  
+It implements clear project structure with separate `frontend/` and `backend/` folder structure.  
+Gruntfile.js at project root the provides:
 
-Most solutions like [sails-generate-frontend-angular](https://github.com/chiefy/sails-generate-frontend-angular) and [simple-angular-rails-app](https://github.com/EmmanuelOga/simple-angular-rails-app) are either putting frontend inside of backend folder or backend inside frontend. Such approach leads to mixup of frontend and backend files and limits generators usage.
+**serve* task for development. It starts frontend and backend development servers and proxies requests to them.
+
+*build* task that compiles both parts, and links them into `dist/` folder.
+
+
+*Why angular-sails-wiring?*  
+Another solutions like [sails-generate-frontend-angular](https://github.com/chiefy/sails-generate-frontend-angular) and [simple-angular-rails-app](https://github.com/EmmanuelOga/simple-angular-rails-app) are either putting frontend inside of backend folder or backend inside frontend. Such approach leads to mixup of frontend and backend files and limits generators usage.
 
 # Project sturcutre
 Having separate frontend and backend folders makes project structure clear. They are being wired together by upper-level grunt file. 
