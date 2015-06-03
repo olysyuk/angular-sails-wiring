@@ -4,13 +4,15 @@ module.exports = function (grunt) {
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
+    require('time-grunt')(grunt);
 
     var wiringConfig = {   
         port: 3000,
 
         backend: {
             dir: 'backend',
-            port: 1338
+            port: 1338,
+            publicDir: 'www'
         },
 
         frontend: {
@@ -18,7 +20,7 @@ module.exports = function (grunt) {
             port: 9000
         },
 
-        distFolder: 'distFolder'
+        distFolder: 'dist'
     };
     
     grunt.initConfig({
@@ -43,6 +45,9 @@ module.exports = function (grunt) {
             },
             buildFrontend: {
                 frontend: 'build'
+            },
+            buildBackend: {
+                backend: 'buildProd'
             }
         },
 
@@ -121,6 +126,34 @@ module.exports = function (grunt) {
                 }
             }
         },
+
+        clean: {
+            build: ['<%=wiring.distFolder%>'],
+            backendPublic: ['<%=wiring.distFolder%>/<%=wiring.backend.publicDir%>']
+        },
+
+        copy: {
+            backendBuild: {
+                files: [
+                    { 
+                        expand: true, 
+                        cwd: '<%=wiring.backend.dir%>', 
+                        src: ['*'], 
+                        dest: '<%=wiring.distFolder%>' 
+                    }
+                ]
+            },
+            frontendBuild: {
+                files: [
+                    {
+                        expand: true, 
+                        cwd: '<%=wiring.frontend.dir%>/dist', 
+                        src: ['*'], 
+                        dest: '<%=wiring.distFolder%>/<%=wiring.backend.publicDir%>' 
+                    }
+                ]
+            }
+        }
     });
 
     grunt.registerTask('wiringServe', [
@@ -134,7 +167,11 @@ module.exports = function (grunt) {
 
 
     grunt.registerTask('build', 'Build frontend, build backend and link things together', [
-        'subgrunt:buildFrontend'
+        'clean:build',
+        'subgrunt:buildFrontend',
+        'copy:backendBuild',
+        'clean:backendPublic',
+        'copy:frontendBuild'
     ]);
     
 
