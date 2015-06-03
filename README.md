@@ -14,6 +14,7 @@ Another solutions like [sails-generate-frontend-angular](https://github.com/chie
 # Project sturcutre
 Having separate frontend and backend folders makes project structure clear. They are being wired together by upper-level grunt file. 
 
+```
 frontend/  
 --> app/ (raw source)  
 --> dist/ (compiled source)  
@@ -25,8 +26,8 @@ backend/
 --> Gruntfile.js (backend: config with tasks 'watch', 'serve' and 'build' )  
 
 
-Gruntfile (subgrunt that relies on upper files, and links frontend/dist to backend/assets when needed)
-
+Gruntfile.js (subgrunt that relies on upper files, and links frontend/dist to backend/assets when needed)
+```
 
 # Set-up
 You are free to choose what generator use for both frontend and backend
